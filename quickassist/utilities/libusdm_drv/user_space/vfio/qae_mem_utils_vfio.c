@@ -208,6 +208,11 @@ static inline int dma_map_slab(const void *virt,
     return ret;
 }
 
+int qae_dma_map_slab(const void *ptr, const uint64_t iova, const size_t size)
+{
+	return dma_map_slab(ptr, iova, size);
+}
+
 static inline int dma_unmap_slab(const uint64_t iova, const size_t size)
 {
     int ret = 0;
@@ -225,6 +230,11 @@ static inline int dma_unmap_slab(const uint64_t iova, const size_t size)
             errno);
 
     return ret;
+}
+
+int qae_dma_unmap_slab(const uint64_t iova, const size_t size)
+{
+	return dma_unmap_slab(iova, size);
 }
 
 static inline void ioctl_free_slab(const int fd, dev_mem_info_t *memInfo)

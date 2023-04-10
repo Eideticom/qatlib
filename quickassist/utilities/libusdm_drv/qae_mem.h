@@ -153,6 +153,9 @@ void qaeMemFree(void **ptr);
  ****************************************************************************/
 void *qaeMemAllocNUMA(size_t size, int node, size_t phys_alignment_byte);
 
+int qae_dma_map_slab(const void *ptr, const uint64_t iova, const size_t size);
+int qae_dma_unmap_slab(const uint64_t iova, const size_t size);
+
 /**
  *****************************************************************************
  * @ingroup CommonMemoryDriver
